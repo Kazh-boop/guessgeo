@@ -1,0 +1,10 @@
+<h1>
+    Weather in {{ city }}
+</h1>
+
+<div >
+    <p>Temperature: {{ currentWeather.temperature }}</p>
+    <p>Humidity: {{ currentWeather.weather_descriptions }}</p>
+    <img src="{{ currentWeather.weather_icons }}" alt="weather icon">
+    <p >Wind: {{ currentWeather.wind_speed }}</p>
+</div>
