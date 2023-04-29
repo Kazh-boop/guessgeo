@@ -1,7 +1,10 @@
 <h1>Liste des pays et de leurs capitales</h1>
 
-<ol>
-  <li *ngFor="let country of countries">
-    {{ country.name }} - {{ country.capital }}
-  </li>
-</ol>
+<app-input-user [countries]="countries" (itemSelected)="userInput = $event"></app-input-user>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+
+<p>{{userInput}}</p>

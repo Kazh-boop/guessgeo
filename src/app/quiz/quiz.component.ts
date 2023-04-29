@@ -9,6 +9,8 @@ import { Country, ICountry } from '../country';
 })
 export class QuizComponent implements OnInit {
   countries: Country[] = []; // list of countries
+  userInput: string = ''; // user input
+
 
   constructor(private countriesService: CountriesService) { }
 
@@ -17,7 +19,7 @@ export class QuizComponent implements OnInit {
       data => {
         data.geonames.forEach((country: ICountry) => {
           console.log(country.capital);
-          if (!(country.capital === '')) { // capital is not empty
+          if (country.capital !== '') { // capital is not empty
             this.countries.push(new Country(country.countryName, country.capital));
           }
         });

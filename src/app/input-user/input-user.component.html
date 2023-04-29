@@ -1,0 +1,6 @@
+<div class="search-container">
+    <input type="search" placeholder="Paris" [(ngModel)]="userInput" (click)="showList()" (cancel)="hideList()">
+    <ul *ngIf="showListFlag">
+      <li *ngFor="let country of countries | filterCapitals:'capital':userInput" (click)="selectCapital(country.capital)">{{ country.capital }}</li>
+    </ul>
+</div>
