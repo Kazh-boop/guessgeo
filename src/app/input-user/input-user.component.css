@@ -18,6 +18,7 @@
   }
   
   .search-container ul {
+    text-align: left;
     position: absolute;
     z-index: 1;
     top: 100%;

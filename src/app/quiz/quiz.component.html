@@ -1,10 +1,29 @@
-<h1>Liste des pays et de leurs capitales</h1>
+<div class="quiz" *ngIf="selectedCountries[currentIndex] !== undefined">
 
-<app-input-user [countries]="countries" (itemSelected)="userInput = $event"></app-input-user>
-<br><br>
-<br>
-<br>
-<br>
-<br>
+    <h1 class="quiz-title">Devine la capitale</h1>
 
-<p>{{userInput}}</p>
+    <div class="quiz-progress">
+        <div class="quiz-progress">Question {{ currentIndex + 1 }} / {{ maxquestion }}</div>
+    </div>
+
+    <p class="quiz-question">Quelle est la capitale <span class="quiz-country">{{ selectedCountries[currentIndex].name }}</span>?</p>
+
+    <app-input-user [userInput]="userInput" [countries]="countries" (itemSelected)="userInput = $event" class="quiz-input"></app-input-user>
+
+    <button [disabled]="isButtonDisabled" (click)="checkAnswer()" (keyup.enter)="checkAnswer()" class="quiz-button">Valider</button>
+    
+
+<div class="quiz-score"> Score: {{ score }} / {{ maxquestion }}</div>
+
+    <div *ngIf="answer" class="quiz-answer">
+        <div *ngIf="answerCorrect; else elseBlock" class="quiz-correct">Correct!</div>
+        <ng-template #elseBlock>
+            <div class="quiz-incorrect">Oups! La bonne réponse était <span class="quiz-capital">{{ selectedCountries[currentIndex].capital }}</span>.</div>
+        </ng-template>
+        <button *ngIf="(currentIndex+1)  !== maxquestion; else elseEnd" (click)="nextQuestion()" class="quiz-next">Question suivante</button>
+        <ng-template #elseEnd>
+            <button (click)="restart()" class="quiz-restart">Recommencer</button>
+        </ng-template>
+    </div>
+    
+</div>
